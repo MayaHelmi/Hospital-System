@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital System</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-100 text-slate-800">
+
+
+    <header class="bg-teal-800 text-white">
+
+        <div class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between relative">
+
+            <h1 class="text-2xl font-bold">City Hospital</h1>
+
+
+            <!-- Mobile menu button -->
+            <button id="menuButton" aria-expanded="false" aria-label="Open menu"
+                class="md:hidden bg-teal-700 px-3 py-2 rounded">
+                ☰
+            </button>
+
+
+            <nav id="mainNav" class="hidden md:flex flex-col md:flex-row gap-1 text-sm">
+
+                <a href="index.html" class="px-3 py-2 rounded bg-teal-700">
+                    Home
+                </a>
+
+                <a href="#" class="px-3 py-2 rounded hover:bg-teal-700">
+                    Patients
+                </a>
+
+                <a href="#" class="px-3 py-2 rounded hover:bg-teal-700">
+                    Doctors
+                </a>
+
+                <a href="#" class="px-3 py-2 rounded hover:bg-teal-700">
+                    Appointments
+                </a>
+
+                <a href="#" class="px-3 py-2 rounded hover:bg-teal-700">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="max-w-7xl mx-auto px-5 py-8">
+
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+
+
+            <!-- ================= ADD NEW PATIENT ================= -->
+            <section>
+
+                <h2 class="text-xl font-bold text-teal-800 mb-4">
+                    Add New Patient
+                </h2>
+
+
+                <form id="patientForm" class="bg-white rounded-xl border border-slate-200 p-6 space-y-4">
+
+
+                    <div>
+                        <label for="fullName" class="block text-sm font-semibold mb-1">
+                            Full name
+                        </label>
+
+                        <input type="text" id="fullName" required
+                            class="w-full px-3 py-2 rounded border border-slate-300">
+                    </div>
+
+
+                    <div>
+                        <label for="password" class="block text-sm font-semibold mb-1">
+                            Password
+                        </label>
+
+                        <input type="password" id="password" required
+                            class="w-full px-3 py-2 rounded border border-slate-300">
+                    </div>
+
+
+                    <div>
+                        <label for="birthDate" class="block text-sm font-semibold mb-1">
+                            Date of birth
+                        </label>
+
+                        <input type="date" id="birthDate" required
+                            class="w-full px-3 py-2 rounded border border-slate-300">
+                    </div>
+
+
+                    <fieldset>
+
+                        <legend class="text-sm font-semibold mb-1">
+                            Gender
+                        </legend>
+
+
+                        <label class="mr-4">
+                            <input type="radio" name="gender" value="Male" checked>
+
+                            Male
+                        </label>
+
+
+                        <label>
+                            <input type="radio" name="gender" value="Female">
+
+                            Female
+                        </label>
+
+                    </fieldset>
+
+
+
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold mb-1">
+                            Phone number
+                        </label>
+
+                        <input type="tel" id="phone" pattern="[0-9]{10}" required
+                            class="w-full px-3 py-2 rounded border border-slate-300">
+                    </div>
+
+
+
+                    <div>
+                        <label for="disease" class="block text-sm font-semibold mb-1">
+                            Chronic diseases
+                        </label>
+
+
+                        <select id="disease" required class="w-full px-3 py-2 rounded border border-slate-300">
+
+
+                            <option value="">
+                                Choose one
+                            </option>
+
+                            <option>
+                                Heart Disease
+                            </option>
+
+                            <option>
+                                Hypertension
+                            </option>
+
+                            <option>
+                                Asthma
+                            </option>
+
+                            <option>
+                                Cancer
+                            </option>
+
+                            <option>
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+
+                    <div>
+                        <label for="imageUrl" class="block text-sm font-semibold mb-1">
+                            Image URL
+                        </label>
+
+
+                        <input type="text" id="imageUrl" placeholder="assets/patient-1.svg"
+                            class="w-full px-3 py-2 rounded border border-slate-300">
+
+                    </div>
+
+
+
+
+                    <button type="submit"
+                        class="w-full bg-teal-700 hover:bg-teal-800 text-white font-semibold py-2 rounded">
+
+                        Save Patient
+
+                    </button>
+
+
+                </form>
+
+
+            </section>
+
+
+
+
+
+
+            <!-- ================= PATIENTS LIST ================= -->
+            <section id="patients">
+
+
+                <div class="flex justify-between items-center mb-4">
+
+
+                    <h2 class="text-xl font-bold text-teal-800">
+                        Patients
+                    </h2>
+
+
+
+                    <div class="flex items-center gap-3">
+
+
+                        <span id="patientCount" class="text-sm text-slate-600">
+
+                            0 saved
+
+                        </span>
+
+
+
+                        <button id="clearButton" class="bg-red-600 text-white px-4 py-2 rounded-lg">
+
+                            Clear All Patients
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div id="patientsCards" class="grid gap-5 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+                </div>
+
+
+
+            </section>
+
+
+
+        </div>
+
+
+    </main>
+
+
+    <footer class="bg-teal-800 text-white text-center text-sm py-5 mt-8">
+        <p>City Hospital &copy; 2026 - All rights reserved</p>
+    </footer>
+
+
+    <!-- at the bottom, so every element above already exists when app.js runs -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>

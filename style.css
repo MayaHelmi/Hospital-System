@@ -1,0 +1,18 @@
+/* Most of the styling is Tailwind, written as classes inside index.html.
+   This file keeps the few rules that are easier as normal CSS. */
+
+/* a long name or phone number wraps instead of stretching its card */
+#patientsCards p {
+    overflow-wrap: anywhere;
+}
+
+/* the browser's own message for an empty field is easy to miss,
+   so mark the field itself in red once the user has tried to submit */
+input:user-invalid,
+select:user-invalid {
+    border-color: #dc2626;
+}
+
+html {
+    scroll-behavior: smooth;
+}
